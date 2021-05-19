@@ -2,7 +2,7 @@ $(document).ready(function() {
     console.log("ready");
 
 // TODO: GLOBAL VARIABLES
-// var city = "";
+var city = "";
 
 var searchButton = $('#search-button');
 var currentTemperature = $('#current-temperature');
@@ -11,7 +11,9 @@ var currentHumidity = $('#humidity');
 var currentWSpeed = $('#wind-speed');
 var currentUvIndex = $('#uv-index');
 var currentWeather = $('#current-weather');
+
 var apiKey = "653094733b20fc02dc6f1e6e6b8bf37e";
+
 var futureWeather = "";
 var futureHumidity = "";
 var futureTemperature = "";
@@ -66,20 +68,49 @@ function storeHistory() {
     // localStorage.setItem(city);
 };
 
-var searchedState = localStorage.getItem("state");
 
+//  could create elements dynamically and append to body
+
+
+
+// or place elements in line and create dynamic data and append to a placeholder
+
+
+
+// where to store and where to display
+
+
+
+// initial state before user interaction (log in greetings) etc
+
+
+
+
+// all other info through interaction
+
+
+
+
+// if its listing info, order it into a list or append items to the appropriate locations 
+
+
+
+
+// define when storage occurs, and when it is pulled from storage
+
+
+
+var searchedState = localStorage.getItem("state");
 //*!
 state.textContent = searchedState;
 //*!
-
-
     searchedState.addEventListener("click", function() {
     localStorage.setItem("state", searchedState);
     console.log(searchedState)
 });
 
 
-
+// create an array of objects to store this information, 
 
 
 
