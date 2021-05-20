@@ -110,57 +110,20 @@ $(document).ready(function () {
         })
     };
 
-
-
-
-
-
-
     // todo must store value entered by userinput to user storage
     function storeHistory() {
 
         // localStorage.setItem(city);
     };
 
-
     //  could create elements dynamically and append to body
-
-
-
     // or place elements in line and create dynamic data and append to a placeholder
-
-
-
     // where to store and where to display
-
-
-
     // initial state before user interaction (log in greetings) etc
-
-
-
-
     // all other info through interaction
-
-
-
-
     // if its listing info, order it into a list or append items to the appropriate locations 
-
-
-
-
     // define when storage occurs, and when it is pulled from storage
-
-
-
     // create an array of objects to store this information, 
-
-
-
-
-
-
 
     // !: completed and troubleshot
 
