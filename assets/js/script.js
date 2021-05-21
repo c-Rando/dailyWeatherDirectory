@@ -1,11 +1,10 @@
 $(document).ready(function () {
     console.log("ready");
-// prepares dom 
+    // prepares dom 
 
 
     // TODO: GLOBAL VARIABLES
 
-    var searchButton = $('#search-button');
     var currentTemperature = $('#current-temperature');
     var currentCity = $('#current-city');
     var currentHumidity = $('#humidity');
@@ -21,7 +20,6 @@ $(document).ready(function () {
     var futureWSpeed = "";
     var futureUvIndex = "";
     var timeDispEl = $("#time-display");
-    var testButtonEl = $("#testButton");
 
     //*! CONFIRMED VARIABLES
     var searchCityBtnEl = $('#search-city');
@@ -31,16 +29,7 @@ $(document).ready(function () {
     // var currentUrlApi; `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
 
 
-// place listener on the button so it picks up a user click
-
-
-
-
-
-
-    
-
-
+    // place listener on the button so it picks up a user click
 
 
     // GIVEN a weather dashboard with form inputs
@@ -59,16 +48,16 @@ $(document).ready(function () {
 
 
     // todo: ALL FUNCTIONS
-
-
-
-
-
-
     // todo city search
-    function cityLookup() {
 
-    };
+
+    // function appendGeoData() {
+    // todo IF MUST ADD TO CALL AT BOTTOM IF YOU REACTIVATE
+    //     var htmlResult = document.createElement('p');
+    //     $('#geometric-data').empty();
+    //     $('#geometric-data').append(htmlResult);
+
+    // };
 
     // todo gets selected city CURRENT weather
     function getCurrentWeather() {
@@ -80,24 +69,44 @@ $(document).ready(function () {
 
     };
 
+    // function pushToLocalStorage() {
+        
+    //     // Save related form data as an object
+    //     var cityInfo = {
+    //       fullName: fullName.value,
+    //       temp: temp.value,
+    //     //   comment: comment.value.trim()
+    //     };
+    //     console.log(cityInfo)
+    //     // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+    //     localStorage.setItem("city", JSON.stringify(cityInfo));
+    //   };
 
 
     // todo gets 5 day weather forecast
     function getFiveDayWeatherApi(event) {
         event.preventDefault();
-        var city = $("#statename").val()
+        var city = $("#city-name").val();
+
+        var geoDataTextArea = document.createElement("LI");
+        var textnode = document.createTextNode(city);
+        geoDataTextArea.appendChild(textnode);
+        document.getElementById("geometric-data").appendChild(geoDataTextArea);
+
+
         console.log(city)
-        var fiveDayUrlApi = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`
+        var fiveDayUrlApi = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
         console.log("fivedayURL: ", fiveDayUrlApi)
         $.ajax({
             url: fiveDayUrlApi,
             success: function (response) {
                 console.log(response);
-                // var data = response.data[0]
+                // var data = response.data
                 // var pulledData = data.main;
                 // console.log(pulledData)
-                // var longitude = data.longitude;
-                // var fullName = data.fullName;
+                // var temp = data[0].main.temp
+                // var fullName =
+                // console.log(temp)
                 // parkList.push(fullName);
             },
             error: function (xhr, status, error) {
@@ -113,7 +122,6 @@ $(document).ready(function () {
     // todo must store value entered by userinput to user storage
     function storeHistory() {
 
-        // localStorage.setItem(city);
     };
 
     //  could create elements dynamically and append to body
@@ -127,6 +135,11 @@ $(document).ready(function () {
 
     // !: completed and troubleshot
 
+
+
+
+
+    
     function displayTime() {
         var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
         timeDispEl.text(rightNow);
@@ -136,15 +149,19 @@ $(document).ready(function () {
 
 
 
-    // current 5 day forecast based on city search
 
 
 
 
 
 
-    setInterval(displayTime, 1000)
 
-    searchCityBtnEl.on("click", getFiveDayWeatherApi)
+
+
+
+    setInterval(displayTime, 1000);
+
+    searchCityBtnEl.on("click", getFiveDayWeatherApi);
+
 
 });
