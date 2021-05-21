@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 
     // TODO: GLOBAL VARIABLES
-
+    var dayOneContainer = $("#day-one-container");
     var currentTemperature = $('#current-temperature');
     var currentCity = $('#current-city');
     var currentHumidity = $('#humidity');
@@ -25,13 +25,6 @@ $(document).ready(function () {
     var searchCityBtnEl = $('#search-city');
 
 
-
-    // var currentUrlApi; `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-
-
-    // place listener on the button so it picks up a user click
-
-
     // GIVEN a weather dashboard with form inputs
     // WHEN I search for a city
     // THEN I am presented with current and future conditions for that city and that city is added to the search history
@@ -45,69 +38,75 @@ $(document).ready(function () {
     // THEN I am again presented with current and future conditions for that city
 
 
-
-
-    // todo: ALL FUNCTIONS
-    // todo city search
-
-
-    // function appendGeoData() {
-    // todo IF MUST ADD TO CALL AT BOTTOM IF YOU REACTIVATE
-    //     var htmlResult = document.createElement('p');
-    //     $('#geometric-data').empty();
-    //     $('#geometric-data').append(htmlResult);
-
-    // };
-
     // todo gets selected city CURRENT weather
-    function getCurrentWeather() {
-
-    };
-
-    // todo get future weather
-    function getFutureWeather() {
-
-    };
-
-    // function pushToLocalStorage() {
-        
-    //     // Save related form data as an object
-    //     var cityInfo = {
-    //       fullName: fullName.value,
-    //       temp: temp.value,
-    //     //   comment: comment.value.trim()
-    //     };
-    //     console.log(cityInfo)
-    //     // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-    //     localStorage.setItem("city", JSON.stringify(cityInfo));
-    //   };
-
-
-    // todo gets 5 day weather forecast
-    function getFiveDayWeatherApi(event) {
+    function getCurrentWeather(event) {
         event.preventDefault();
         var city = $("#city-name").val();
 
-        var geoDataTextArea = document.createElement("LI");
-        var textnode = document.createTextNode(city);
-        geoDataTextArea.appendChild(textnode);
-        document.getElementById("geometric-data").appendChild(geoDataTextArea);
-
+        $("#current-city").text(city)
 
         console.log(city)
-        var fiveDayUrlApi = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
+        var currentUrlApi = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        console.log("current day communication succeed: ", currentUrlApi)
+        $.ajax({
+            url: currentUrlApi,
+            success: function (response) {
+                console.log(response);
+                var weatherIcon = response.weather[0].icon
+                console.log("attempting to pull the json: ", response.weather[0].icon);
+                console.log(response.coord.lat, response.coord.lon);
+                getFiveDayWeatherApi(response.coord.lat, response.coord.lon);
+            },
+            error: function (xhr, status, error) {
+                console.log("status: ", status)
+                console.log("error: ", error)
+            },
+            complete: function (xhr, status) {
+                console.log("complete: ", status)
+            }
+
+        })
+    };
+
+
+    // todo gets 5 day weather forecast
+    function getFiveDayWeatherApi(lat, lon) {
+        var city = $("#city-name").val();
+
+        console.log(city)
+        var fiveDayUrlApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely,current,alerts&units=imperial&appid=${apiKey}`
         console.log("fivedayURL: ", fiveDayUrlApi)
         $.ajax({
             url: fiveDayUrlApi,
             success: function (response) {
                 console.log(response);
-                // var data = response.data
-                // var pulledData = data.main;
-                // console.log(pulledData)
-                // var temp = data[0].main.temp
-                // var fullName =
-                // console.log(temp)
-                // parkList.push(fullName);
+                console.log(response.daily[0].dt);
+                for (var i = 0; i < 5; i++) {
+                    console.log(response.daily[i].weather[0].description)
+                    console.log(response.daily[i].weather[0].main)
+                    var weather = response.daily[i].weather[0].description;
+                    var icon = response.daily[i].weather[0].icon;
+                    var temp = response.daily[i].temp.day;
+                    var uvi = response.daily[i].uvi;
+                    var iconImage = $("<img>").attr("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+                    console.log(iconImage)
+                    console.log(response.daily[i].temp.day);
+                    console.log("div" + '[data-index="' + i + '"]')
+                    $("div" + '[data-index="' + i + '"]').append(
+                        " weather: " + weather,
+                        iconImage, "<br>",
+                        " temp: " + temp, "<br>",
+                        " uv index: " + uvi
+                    );
+                    storeObj = {
+                        weather: weather,
+                        icon: icon,
+                        temp: temp,
+                        uvi: uvi
+                    }
+                    localStorage.setItem("day-" + i, JSON.stringify(storeObj));
+                };
+
             },
             error: function (xhr, status, error) {
                 console.log("status: ", status)
@@ -124,22 +123,6 @@ $(document).ready(function () {
 
     };
 
-    //  could create elements dynamically and append to body
-    // or place elements in line and create dynamic data and append to a placeholder
-    // where to store and where to display
-    // initial state before user interaction (log in greetings) etc
-    // all other info through interaction
-    // if its listing info, order it into a list or append items to the appropriate locations 
-    // define when storage occurs, and when it is pulled from storage
-    // create an array of objects to store this information, 
-
-    // !: completed and troubleshot
-
-
-
-
-
-    
     function displayTime() {
         var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
         timeDispEl.text(rightNow);
@@ -147,21 +130,6 @@ $(document).ready(function () {
         console.log(present)
     };
 
-
-
-
-
-
-
-
-
-
-
-
-
     setInterval(displayTime, 1000);
-
-    searchCityBtnEl.on("click", getFiveDayWeatherApi);
-
-
+    searchCityBtnEl.on("click", getCurrentWeather);
 });
