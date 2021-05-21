@@ -81,7 +81,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 console.log(response.daily[0].dt);
-                for (var i = 0; i < 5; i++) {
+                for (var i = 0; i < 6; i++) {
                     console.log(response.daily[i].weather[0].description)
                     console.log(response.daily[i].weather[0].main)
                     var weather = response.daily[i].weather[0].description;

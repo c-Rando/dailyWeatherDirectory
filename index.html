@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>WEAYTHER @</title>
+    <title>Daily Weather Directory</title>
 </head>
 
 <body>
@@ -17,6 +17,7 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4"><strong>Your Daily Weather Directory</strong></h1>
+                <p class="lead">Where would you like to go?</p>
             </div>
         </div>
     </header>
@@ -37,53 +38,29 @@
                 <div class="card">
                     <div class="current-city">
                         <h2 class="subtitle">Current Weather for: <span id="current-city"></span></h2>
-                        <div id="current-weather-container" class=""></div>
+                        <div data-index="0" id="current-weather-container"></div>
                     </div>
-                    <div id="five-day-container" class="bg-info">
-                        <h2 class="subtitle">5 Day forcast<span id="fiveday"></span></h2>
-                        <div class="card-group five-day">
-                            <div class="card col-12 col-2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Day One</h5>
-                                    <!-- Empty container for Day one-->
-                                    <div data-index="0" id="day-one-container" class=""></div>
-                                </div>
-                                <div class="card-footer">
-                                </div>
-                            </div>
+                    <h2 class="subtitle">5 Day forcast<span id="fiveday"></span>
+                    </h2>
+                    <div id="five-day-container" class="row">
+                        <div data-index="1" id="day-one-container" class="card col">
+                            <h4>place holder</h4>
                         </div>
-                        <div class="row">
-                            <div class="card  col-md-2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Day Two</h5>
-                                    <!-- Empty container for Day 2-->
-                                    <div data-index="1" id="day-two-container" class="">
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                </div>
-                            </div>
-                            <div class="card  col-md-2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Day Three</h5>
-                                    <!-- Empty container for Day 2-->
-                                    <div data-index="2" id="day-three-container" class="">
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                </div>
-                            </div>
-                            <div class="card  col-md-2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Day Four</h5>
-                                    <!-- Empty container for Day 2-->
-                                    <div data-index="3" id="day-four-container" class="">
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                </div>
-                            </div>
+                        <div data-index="2" id="day-two-container" class="card col">
+                            <h4>place holder</h4>
                         </div>
+                        <div data-index="3" id="day-three-container" class="card col">
+                            <h4>place holder</h4>
+                        </div>
+                        <div data-index="4" id="day-four-container" class="card col">
+                            <h4>place holder</h4>
+                        </div>
+                        <div data-index="5" id="day-five-container" class="card col">
+                            <h4>place holder</h4>
+                        </div>
+                        
+                    </div>
+                </div>
             </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
