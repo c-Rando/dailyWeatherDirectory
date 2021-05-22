@@ -5,33 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
+    <meta name="Weather Now" content="Curent and Five Day forcast searched by city." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Daily Weather Directory</title>
 </head>
 
 <body>
     <header>
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid jumbotron-weather">
             <div class="container">
-                <h1 class="display-4"><strong>Your Daily Weather Directory</strong></h1>
+                <h1 class="display-4" style><strong>Your Daily Weather Directory</strong></h1>
                 <p class="lead">Where would you like to go?</p>
             </div>
         </div>
     </header>
-    <main class="container">
+    <main class="container" style="background-image:url=(' ../img/AC1.jpg')">
         <div class="row">
             <section id="city-choice" class="col-md-3">
-                <div class="card">
+                <div class="card card-search">
                     <h3 class="card-header text-uppercase">Search for a City</h3>
-                    <form id="geometric-data" class="card-body">
+                    <section id="geometric-data" class="card-body">
                         <label class="form-label" for="city">City</label>
                         <label class="form-label" for="city-name"></label>
-                        <input name="city-name" id="city-name" type="text" autofocus="true" class="form-input" />
-                        <button type="submit" class="btn bg-info" id="search-city">Get City, State</button>
-                    </form>
+                        <input name="city-name" id="city-name" type="text" class="form-input" />
+                        <button type="submit" class="btn bg-info" id="search-city">City Name</button>
+                        <h6 class="subtitle"><span id="chosen-city"></span></h6>
+                    </section>
                 </div>
             </section>
             <section id="weather-input" class="col-md-9">
@@ -44,21 +49,20 @@
                     </h2>
                     <div id="five-day-container" class="row">
                         <div data-index="1" id="day-one-container" class="card col">
-                            <h4>place holder</h4>
+                            <h4></h4>
                         </div>
                         <div data-index="2" id="day-two-container" class="card col">
-                            <h4>place holder</h4>
+                            <h4></h4>
                         </div>
                         <div data-index="3" id="day-three-container" class="card col">
-                            <h4>place holder</h4>
+                            <h4></h4>
                         </div>
                         <div data-index="4" id="day-four-container" class="card col">
-                            <h4>place holder</h4>
+                            <h4></h4>
                         </div>
                         <div data-index="5" id="day-five-container" class="card col">
-                            <h4>place holder</h4>
+                            <h4></h4>
                         </div>
-                        
                     </div>
                 </div>
             </section>
@@ -70,4 +74,4 @@
     <script src="./assets/js/script.js"></script>
 </body>
 
-</html>
+</html><!-- Github not matching up to local, comments for new push-->
