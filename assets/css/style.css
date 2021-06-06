@@ -27,10 +27,10 @@ body {
     border-radius: 2;
     border-bottom: 2px solid rgb(63, 6, 219);
   }
-  .jumbotron-weather {
+  /* .jumbotron-weather {
     background-image: url(./assets/img/skimmingBuf1);
     background-size: cover;
-  }
+  } */
   .jumbotron-parkout {
     background-image:url("https://www.nps.gov/common/uploads/grid_builder/appa/crop16_9/7439728A-1DD8-B71B-0B90C9CA77A75C7E.jpg?width=950&quality=90&mode=crop");
     text-align: left;

@@ -29,11 +29,11 @@ $(document).ready(function () {
     // WHEN I click on a city in the search history
     // THEN I am again presented with current and future conditions for that city
 
-    function appendCurrentCityToPage() {
-        $("#chosen-city").text(city);
-        console.log("#chosen-city");
-
-    };
+    // function appendCurrentCityToPage() {
+    //     $("#chosen-city").text(city);
+    //     console.log("#chosen-city");
+    //     $("#chosen-city").attr("src", city);
+    // };
 
 
 
@@ -150,4 +150,5 @@ $(document).ready(function () {
 
     setInterval(displayTime, 1000);
     searchCityBtnEl.on("click", getCurrentWeather);
+    // searchCityBtnEl.on("click", appendCurrentCityToPage);
 });
