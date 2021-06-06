@@ -8,34 +8,12 @@ $(document).ready(function () {
     var currentCity = $('#current-city'); // todo #current-city  make equal to 5 day
     var currentWSpeed = $('#wind-speed'); // todo add wind speed to details
     var futureWSpeed = "";
-    // var holdingDiv;
-    // var userEmailSpan = document.querySelector("#user-email");
     var chosenCity = $("#chosen-city")
 
     //*! CONFIRMED VARIABLES
     var searchCityBtnEl = $('#search-city');
     var timeDispEl = $("#time-display");
     var apiKey = "653094733b20fc02dc6f1e6e6b8bf37e";
-
-    // *! GIVEN a weather dashboard with form inputs COMPLETED
-    // *! WHEN I search for a city
-    // *! THEN I am presented with current and future conditions for that city and that city is added to the search history
-    // *!  WHEN I view current weather conditions for that city
-    // *! THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-    // WHEN I view the UV index
-    // THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-    // *! WHEN I view future weather conditions for that city
-    // *! THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-    // WHEN I click on a city in the search history
-    // THEN I am again presented with current and future conditions for that city
-
-    // function appendCurrentCityToPage() {
-    //     $("#chosen-city").text(city);
-    //     console.log("#chosen-city");
-    //     $("#chosen-city").attr("src", city);
-    // };
-
-
 
     // *! COMPLETED gets selected city CURRENT weather
     function getCurrentWeather(event) {
