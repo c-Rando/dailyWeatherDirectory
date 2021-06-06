@@ -22,7 +22,7 @@ $(document).ready(function () {
         console.log("current searched was: ", city);
         $("#chosen-city").text(city);
         $("#current-city").text(city);
-        var currentUrlApi = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+        var currentUrlApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
         console.log("current day communication succeed: ", currentUrlApi);
         $.ajax({
             url: currentUrlApi,
@@ -60,7 +60,7 @@ $(document).ready(function () {
                     var icon = response.daily[i].weather[0].icon;
                     var temp = response.daily[i].temp.day;
                     var uvi = response.daily[i].uvi;
-                    var iconImage = $("<img>").attr("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+                    var iconImage = $("<img>").attr("src", `https://openweathermap.org/img/wn/${icon}@2x.png`);
                     console.log(iconImage)
                     console.log(response.daily[i].temp.day);
                     console.log("div" + '[data-index="' + i + '"]')
